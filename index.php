@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simu Fashion - Premium Clothing Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>SIMU<span>FASHION</span></h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.html" target="_blank" style="color: var(--primary-color);"><i class="fas fa-cog"></i> Admin</a></li>
+        </ul>
+        <div class="nav-icons">
+            <div class="search-box">
+                <input type="text" placeholder="Search products...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            <div class="user-icon">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('img/img22.jpg');">
+                <div class="hero-content">
+                    <span class="hero-subtitle">New Collection 2026</span>
+                    <h2>Discover Your <span>Style</span></h2>
+                    <p>Explore our latest fashion trends and express your unique personality with our premium clothing collection.</p>
+                    <a href="#products" class="btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('img/b1.JPG');">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Summer Sale</span>
+                    <h2>Up to <span>50% Off</span></h2>
+                    <p>Don't miss our biggest sale of the season. Limited time offers on selected items.</p>
+                    <a href="#products" class="btn-primary">View Deals <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-nav">
+            <button class="hero-prev" onclick="changeHeroSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="hero-next" onclick="changeHeroSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-box">
+            <i class="fas fa-shipping-fast"></i>
+            <h3>Free Shipping</h3>
+            <p>On orders over $100</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-undo"></i>
+            <h3>Easy Returns</h3>
+            <p>30-day return policy</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Dedicated support team</p>
+        </div>
+        <div class="feature-box">
+            <i class="fas fa-lock"></i>
+            <h3>Secure Payment</h3>
+            <p>100% secure checkout</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <h2>Shop by <span>Category</span></h2>
+            <p>Browse our wide range of fashion categories</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="img/g1.jpg" alt="Men's Fashion">
+                <div class="category-overlay">
+                    <h3>Men's Collection</h3>
+                    <a href="#products" class="btn-secondary">Explore</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="img/g11.JPG" alt="Women's Fashion">
+                <div class="category-overlay">
+                    <h3>Women's Collection</h3>
+                    <a href="#products" class="btn-secondary">Explore</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="img/g3.JPG" alt="Accessories">
+                <div class="category-overlay">
+                    <h3>Accessories</h3>
+                    <a href="#products" class="btn-secondary">Explore</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="img/g0.JPG" alt="Shoes">
+                <div class="category-overlay">
+                    <h3>Footwear</h3>
+                    <a href="#products" class="btn-secondary">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-header">
+            <h2>Featured <span>Products</span></h2>
+            <p>Check out our most popular items</p>
+        </div>
+        <div class="product-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="men">Men</button>
+            <button class="filter-btn" data-filter="women">Women</button>
+            <button class="filter-btn" data-filter="accessories">Accessories</button>
+        </div>
+        <div class="product-count" id="productCount">Loading products...</div>
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be dynamically loaded from database -->
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Loading products...</p></div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-content">
+            <span class="banner-tag">Limited Offer</span>
+            <h2>Summer Collection</h2>
+            <p>Get up to 40% off on all summer items. Hurry up!</p>
+            <a href="#products" class="btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="img/img1.jpg" alt="About Us">
+            </div>
+            <div class="about-content">
+                <h2>About <span>Simu Fashion</span></h2>
+                <p>Welcome to Simu Fashion, your premier destination for trendy and stylish clothing. We believe that fashion is not just about clothes, it's about expressing your unique personality.</p>
+                <p>Founded with a vision to provide high-quality fashion at affordable prices, we curate the latest world to bring you trends from around the the best selection of clothing and accessories.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>10K+</h3>
+                        <p>Happy Customers</p>
+                    </div>
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Products</p>
+                    </div>
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-content">
+            <h2>Subscribe to Our <span>Newsletter</span></h2>
+            <p>Get the latest updates on new products and upcoming sales</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <h2>Contact <span>Us</span></h2>
+            <p>We'd love to hear from you</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Nairobi, Kenya</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+254 700 000 000</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@simufashion.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Hours</h4>
+                        <p>Mon - Sat: 9AM - 8PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo">
+                    <h1>SIMU<span>FASHION</span></h1>
+                </div>
+                <p>Your premier destination for trendy and stylish clothing. Express your unique personality with our premium fashion collection.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Download App</h3>
+                <p>Shop on the go with our mobile app</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-apple"></i>
+                        <span>App Store</span>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-google-play"></i>
+                        <span>Google Play</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simu Fashion. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically loaded from database -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="#products" class="btn-shop" onclick="toggleCart()">Shop Now</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+            <button class="btn-continue" onclick="toggleCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <script src="home.js"></script>
+</body>
+</html>
